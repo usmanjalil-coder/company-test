@@ -6,7 +6,6 @@ use App\Models\Company;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
 {
