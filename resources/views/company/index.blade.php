@@ -9,6 +9,11 @@
                         <tr>
                             <th>ID</th>
                             <th>Company Name</th>
+
+                            <!-- NEW: logo columns -->
+                            <th>Logo</th>
+                            <th>Accreditors</th>
+
                             <th>Address</th>
                             <th>Contact Number</th>
                             <th>Email</th>
@@ -34,38 +39,24 @@
                 processing: true,
                 serverSide: true,
                 ajax: "{{ route('company.index') }}",
-                columns: [{
-                        data: 'id'
-                    },
+                columns: [
+                    { data: 'id' },
+                    { data: 'company_name' },
+
+                    // NEW: these columns will receive HTML <img> from server
+                    { data: 'company_logo', orderable: false, searchable: false },
+                    { data: 'accreditor_logos', orderable: false, searchable: false },
+
+                    { data: 'company_address' },
+                    { data: 'contact_number' },
+                    { data: 'email_address' },
+                    { data: 'solicitor_name' },
+                    { data: 'regulated_by' },
+                    { data: 'company_reg_number' },
                     {
-                        data: 'company_name'
-                    },
-                    {
-                        data: 'company_address'
-                    },
-                    {
-                        data: 'contact_number'
-                    },
-                    {
-                        data: 'email_address'
-                    },
-                    {
-                        data: 'solicitor_name'
-                    },
-                    {
-                        data: 'regulated_by'
-                    },
-                    {
-                        data: 'company_reg_number'
-                    },
-                    {
-                        data: null,
-                        render: function(data, type, row) {
-                            return '<a href="' + '{{ route('company.edit', ':id') }}'.replace(':id',
-                                    row.id) + '" class="btn btn-sm btn-primary">Edit</a> ' +
-                                '<a href="#" class="btn btn-sm btn-danger delete-btn" data-id="' +
-                                row.id + '">Delete</a>';
-                        }
+                        data: 'actions',
+                        orderable: false,
+                        searchable: false
                     }
                 ]
             });
