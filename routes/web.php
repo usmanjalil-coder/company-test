@@ -10,6 +10,9 @@ Route::get('/admin/{id}/edit', [AdminController::class, 'edit'])->name('company.
 Route::put('/admin/{id}', [AdminController::class, 'update'])->name('company.update');
 Route::delete('/admin/{id}', [AdminController::class, 'destroy'])->name('company.delete');
 
+// NEW: delete a single logo (company_logo or an accreditor logo) via AJAX POST
+Route::post('/company/{id}/logo-delete', [AdminController::class, 'deleteLogo'])->name('company.logo.delete');
+
 Route::get('/', function () {
     return view('index');
 });
