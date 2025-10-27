@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Company;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
+use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
 {
@@ -88,7 +89,7 @@ class AdminController extends Controller
         if ($request->hasFile('company_logo')) {
             // Delete old logo if exists
             if ($company->company_logo) {
-                \Storage::disk('public')->delete($company->company_logo);
+                Storage::disk('public')->delete($company->company_logo);
             }
             $data['company_logo'] = $request->file('company_logo')->store('logos', 'public');
         }
@@ -98,7 +99,7 @@ class AdminController extends Controller
             if ($company->accreditor_logos) {
                 $oldLogos = json_decode($company->accreditor_logos, true);
                 foreach ($oldLogos as $oldLogo) {
-                    \Storage::disk('public')->delete($oldLogo);
+                    Storage::disk('public')->delete($oldLogo);
                 }
             }
             $logos = [];
@@ -118,12 +119,12 @@ class AdminController extends Controller
         $company = Company::findOrFail($id);
 
         if ($company->company_logo) {
-            \Storage::disk('public')->delete($company->company_logo);
+            Storage::disk('public')->delete($company->company_logo);
         }
         if ($company->accreditor_logos) {
             $oldLogos = json_decode($company->accreditor_logos, true);
             foreach ($oldLogos as $oldLogo) {
-                \Storage::disk('public')->delete($oldLogo);
+                Storage::disk('public')->delete($oldLogo);
             }
         }
 
