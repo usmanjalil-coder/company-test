@@ -1,5 +1,5 @@
 <div class="sidebar">
-    <a href="{{ route('company.index') }}" class="active">Company</a>
+    <a href="{{ route('companies.index') }}" class="active">Company</a>
     <a href="{{ route('authority-letters.index') }}">Authority Letter</a>
     <a href="#">Client Care</a>
     <a href="#">Initial Contact and Advise</a>
