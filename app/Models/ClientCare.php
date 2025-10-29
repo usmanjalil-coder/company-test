@@ -14,6 +14,8 @@ class ClientCare extends Model
         'date',
     ];
 
+    protected $table = 'client_care';
+
     protected $casts = [
         'date' => 'date',
     ];
